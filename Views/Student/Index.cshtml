@@ -49,7 +49,19 @@
                 <td>@(s.IsRegular ? "Chính quy" : "Phi chính quy")</td>
                 <td>@s.Address</td>
                 <td>@s.Email</td>
+
+                <td>@s.Anh</td>
             </tr>
         }
     </tbody>
 </table>
+<p>@DateTime.Now</p>
+<p>@DateTime.IsLeapYear(2016)</p>
+@{
+    void RenderName(string name)
+    {
+        <p>Name: <strong>@name</strong></p>
+    }
+    RenderName("Mahatma Gandhi");
+    RenderName("Martin Luther King, Jr.");
+}

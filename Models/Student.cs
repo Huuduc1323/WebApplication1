@@ -13,5 +13,6 @@
         public string? Address { get; set; }//Địa chỉ
         public DateTime DateOfBorth { get; set; }//Ngày sinh
 
+        public string? Anh { get; set; }
     }
 }

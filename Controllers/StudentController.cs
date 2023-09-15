@@ -64,6 +64,33 @@ namespace WebApplication1.Controllers
             _students.Add(s);
             return View("Index", _students);
         }
+
+        public IActionResult Create(Student s, IFormFile Image)
+        {
+            //giải thích: Câu 9: Nếu thông tin file trong input ở trong file create mà khác rỗng tức đã lấy
+            //file thì sẽ lấy tên file ở dòng lệnh 76 và 77
+
+            if (Image != null)
+            {
+                var fileName = Image.FileName;
+                fileName = Path.GetFileName(fileName);
+
+                // giải thích: Câu 9: gán tên file vào cột Anh đã tạo ở bên file Index
+                s.Anh = fileName;
+
+
+            }
+            //giải thích: Câu 9: Nếu thông tin file trong input ở trong file create mà rỗng tức chưa truyền link file vào thì sẽ hiển thị ra 
+            // "Chưa chọn file ảnh đại diện" ở cột Anh đã tạo ở bên file Index
+            else
+            {
+                s.Anh = "Chưa chọn file ảnh đại diện!";
+            }
+
+            s.Id = _students.Last<Student>().Id + 1;
+            _students.Add(s);
+            return View("Index", _students);
+        }
     }
 }
 
